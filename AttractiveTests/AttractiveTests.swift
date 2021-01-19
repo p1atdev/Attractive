@@ -19,8 +19,22 @@ class AttractiveTests: XCTestCase {
     }
 
     func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let testAttractive = AttractiveViewController()
+        
+        let components = AttractiveComponents()
+        
+        components.append(component: .init(type: .title, textContent: "This is a title!"))
+        
+        for i in Range(1...5) {
+            components.append(component: .init(type: .text, textContent: "This is a line \(i) of text!"))
+        }
+        
+        //create
+        testAttractive.create(attractive: components)
+        
+        
+        
     }
 
     func testPerformanceExample() throws {
