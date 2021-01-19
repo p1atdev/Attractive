@@ -7,19 +7,19 @@
 
 import UIKit
 
-class AttractiveTextCell: UITableViewCell {
+public class AttractiveTextCell: UITableViewCell {
     
     //テキストのラベル
     @IBOutlet weak var contentTextView: UITextView!
     
 
-    override func awakeFromNib() {
+    public override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
     
-    open func setData(text: String) {
+    public func setData(text: String) {
         contentTextView.text = text
     }
     

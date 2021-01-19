@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name         = "Attractive"
-s.version      = "0.0.5"
+s.version      = "0.0.6"
 s.summary      = "Attractive is a modern and seeable ViewController library."
 s.license      = { :type => 'MIT', :file => 'LICENSE' }
 s.homepage     = "https://github.com/p1atdev/Attractive"

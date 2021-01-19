@@ -11,22 +11,22 @@ import UIKit
 public class AttractiveViewController: UITableViewController {
     
     //背景色
-    open var defaultBackgroundColor: UIColor = UIColor.systemBackground
+    public var defaultBackgroundColor: UIColor = UIColor.systemBackground
     
     //テキストの文字
-    open var defaultTextColor: UIColor = UIColor.label
+    public var defaultTextColor: UIColor = UIColor.label
     
     //アクセントカラー
-    open var accentColor: UIColor = UIColor.systemBlue
+    public var accentColor: UIColor = UIColor.systemBlue
     
     //グレーアウトのカラー
-    open var defaultGrayColor: UIColor = UIColor.secondaryLabel
+    public var defaultGrayColor: UIColor = UIColor.secondaryLabel
     
     //オブジェクト
     var attractiveComponents: AttractiveComponents!
     
     //セルの登録
-    open override func viewDidLoad() {
+    public override func viewDidLoad() {
         //header
         tableView.register(UINib(nibName: "AttractiveHeaderCell", bundle: nil), forCellReuseIdentifier: "attractiveHeaderCell")
         
@@ -46,17 +46,17 @@ public class AttractiveViewController: UITableViewController {
 extension AttractiveViewController {
     
     //セクションの数->1固定
-    open override func numberOfSections(in tableView: UITableView) -> Int {
+    public override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     //セルの数
-    open override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return attractiveComponents!.components.count   //要素の数だけ
     }
     
     //セルを指定
-    open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //何番目か
         let rowAt = indexPath.row
         

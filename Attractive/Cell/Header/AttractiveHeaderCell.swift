@@ -7,13 +7,13 @@
 
 import UIKit
 
-class AttractiveHeaderCell: UITableViewCell {
+public class AttractiveHeaderCell: UITableViewCell {
     
     //MARK: outlet
     //ヘッダーのラベル
     @IBOutlet private var headerLabel: UILabel!
 
-    override func awakeFromNib() {
+    public override func awakeFromNib() {
         super.awakeFromNib()
         
     }
