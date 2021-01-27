@@ -57,35 +57,60 @@ extension AttractiveViewController {
     
     //セルを指定
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        //エラータイプ
+        enum LoadError: Error {
+            case requiredItemIsNil(content: String)
+        }
+        
         //何番目か
         let rowAt = indexPath.row
         
-        //タイプで選別
-        switch attractiveComponents.components[rowAt].type {
-        case .header:
-            //cell
-            let cell = tableView.dequeueReusableCell(withIdentifier: "attractiveHeaderCell") as! AttractiveHeaderCell
-            //代入
-            cell.setData(header: attractiveComponents.components[rowAt].textContent!)
+        do {
+            //タイプで選別
+            switch attractiveComponents.components[rowAt].type {
+            case .header:
+                //cell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "attractiveHeaderCell") as! AttractiveHeaderCell
+                
+                if let text = attractiveComponents.components[rowAt].textContent {
+                    //代入
+                    cell.setData(header: text)
+                } else {
+                    throw LoadError.requiredItemIsNil(content: "Header Title is nil")
+                }
+                
+                return cell
+                
+            case .text:
+                //cell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "attractiveTextCell") as! AttractiveTextCell
+                
+                if let text = attractiveComponents.components[rowAt].textContent {
+                    //代入
+                    cell.setData(text: text)
+                } else {
+                    throw LoadError.requiredItemIsNil(content: "Header Title is nil")
+                }
+                
+                return cell
+                
+            default:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "attractiveTextCell") as! AttractiveTextCell
+                
+                //代入
+                cell.setData(text: "Error!")
+                
+                return cell
+            }
             
-            return cell
+        } catch {
             
-        case .text:
-            //cell
-            let cell = tableView.dequeueReusableCell(withIdentifier: "attractiveTextCell") as! AttractiveTextCell
+            switch error {
+            default:
+                break
+            }
             
-            //代入
-            cell.setData(text: attractiveComponents.components[rowAt].textContent!)
-            
-            return cell
-            
-        default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "attractiveTextCell") as! AttractiveTextCell
-            
-            //代入
-            cell.setData(text: "Error!")
-            
-            return cell
         }
     }
     

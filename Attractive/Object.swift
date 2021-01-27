@@ -11,12 +11,14 @@ import UIKit
 public class AttractiveComponents {
     
     //要素を入れるやつ
-    var components: Array<AttractiveComponent> = []
+    public var components: Array<AttractiveComponent> = []
     
     //追加する
     public func append(component: AttractiveComponent) {
         self.components.append(component)
     }
+    
+    public init() {}
     
 }
 
