@@ -66,51 +66,42 @@ extension AttractiveViewController {
         //何番目か
         let rowAt = indexPath.row
         
-        do {
-            //タイプで選別
-            switch attractiveComponents.components[rowAt].type {
-            case .header:
-                //cell
-                let cell = tableView.dequeueReusableCell(withIdentifier: "attractiveHeaderCell") as! AttractiveHeaderCell
-                
-                if let text = attractiveComponents.components[rowAt].textContent {
-                    //代入
-                    cell.setData(header: text)
-                } else {
-                    throw LoadError.requiredItemIsNil(content: "Header Title is nil")
-                }
-                
-                return cell
-                
-            case .text:
-                //cell
-                let cell = tableView.dequeueReusableCell(withIdentifier: "attractiveTextCell") as! AttractiveTextCell
-                
-                if let text = attractiveComponents.components[rowAt].textContent {
-                    //代入
-                    cell.setData(text: text)
-                } else {
-                    throw LoadError.requiredItemIsNil(content: "Header Title is nil")
-                }
-                
-                return cell
-                
-            default:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "attractiveTextCell") as! AttractiveTextCell
-                
+        
+        //タイプで選別
+        switch attractiveComponents.components[rowAt].type {
+        case .header:
+            //cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "attractiveHeaderCell") as! AttractiveHeaderCell
+            
+            if let text = attractiveComponents.components[rowAt].textContent {
                 //代入
-                cell.setData(text: "Error!")
-                
-                return cell
+                cell.setData(header: text)
+            } else {
+                //                    throw LoadError.requiredItemIsNil(content: "Header Title is nil")
             }
             
-        } catch {
+            return cell
             
-            switch error {
-            default:
-                break
+        case .text:
+            //cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "attractiveTextCell") as! AttractiveTextCell
+            
+            if let text = attractiveComponents.components[rowAt].textContent {
+                //代入
+                cell.setData(text: text)
+            } else {
+                //                    throw LoadError.requiredItemIsNil(content: "Header Title is nil")
             }
             
+            return cell
+            
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "attractiveTextCell") as! AttractiveTextCell
+            
+            //代入
+            cell.setData(text: "Error!")
+            
+            return cell
         }
     }
     
